@@ -1,6 +1,6 @@
 {
   "name": "singleton-mqtt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create a singleton instance of a mqtt connection (Node server)",
   "main": "index.js",
   "scripts": {
@@ -16,15 +16,15 @@
     "node"
   ],
   "author": "sguilly",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sguilly/singleton-mqtt/issues"
   },
   "homepage": "https://github.com/sguilly/singleton-mqtt#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "mqtt": "^1.7.0",
-    "shortid": "^2.2.4",
-    "type-name": "^2.0.0"
+    "shortid": "^2.2.4"
   },
   "devDependencies": {
     "mosca": "^1.0.2"

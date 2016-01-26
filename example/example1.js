@@ -10,7 +10,6 @@ server.on('ready', function()
 {
     var ClientMqtt = require('../index');
 
-
     // Don't work with wildcards
     var clientMqtt0 = new ClientMqtt();
 
@@ -20,8 +19,6 @@ server.on('ready', function()
     });
 
     // --> See example 2 to get instance of the mqtt client
-
-
 
     // Good way for a single topic subscription
 
@@ -46,10 +43,6 @@ server.on('ready', function()
 
 
     var clientMqtt3 = new ClientMqtt();
-
-
-
-
 
 });
 

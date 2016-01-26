@@ -13,7 +13,9 @@ server.on('ready', function()
     var opts = {
         name: 'mqttTest',
         mqtt: {
-            ip: 'localhost'
+            ip: 'localhost',
+            debug: true,
+            watchdog: { minute: 5, cb: function(){process.exit(1);} } //minutes
         }
     };
 
@@ -52,7 +54,20 @@ server.on('ready', function()
 
     clientMqtt2.publish('OLKKOK/os',JSON.stringify(new Date()));
 
+    setTimeout(function()
+    {
+        server.close();
+    }, 2000);
 
+    setTimeout(function()
+    {
+        console.log('clientMqtt2 =',new ClientMqtt().getStatus());
+    }, 5000);
+
+    setTimeout(function()
+    {
+        console.log('clientMqtt2 =',new ClientMqtt().getStatus());
+    }, 10000);
 
 });
 
