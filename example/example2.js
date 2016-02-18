@@ -20,7 +20,7 @@ server.on('ready', function()
     };
 
 
-    var clientMqtt0 = new ClientMqtt(opts).getInstance();
+    var clientMqtt0 = ClientMqtt.getInstance(opts);
 
     clientMqtt0.subscribe('+/os', {qos: 0});
 
@@ -30,7 +30,7 @@ server.on('ready', function()
     });
 
 
-    var clientMqtt1 = new ClientMqtt(opts).getInstance();
+    var clientMqtt1 = ClientMqtt.getInstance(opts);
 
     clientMqtt1.subscribe('THYUI/os', {qos: 0});
 
@@ -43,7 +43,7 @@ server.on('ready', function()
 
 
 
-    var clientMqtt2 = new ClientMqtt(opts).getInstance();
+    var clientMqtt2 = ClientMqtt.getInstance(opts);
 
     clientMqtt2.subscribe('OLKKOK/os', {qos: 0});
 
@@ -61,12 +61,12 @@ server.on('ready', function()
 
     setTimeout(function()
     {
-        console.log('clientMqtt2 =',new ClientMqtt().getStatus());
+        console.log('clientMqtt2 =',ClientMqtt.getInstance().getStatus());
     }, 5000);
 
     setTimeout(function()
     {
-        console.log('clientMqtt2 =',new ClientMqtt().getStatus());
+        console.log('clientMqtt2 =',ClientMqtt.getInstance().getStatus());
     }, 10000);
 
 });

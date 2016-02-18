@@ -1,1 +1,1 @@
-module.exports = require('./lib/singleton-mqtt');
+module.exports = require('./lib1/singleton-mqtt');

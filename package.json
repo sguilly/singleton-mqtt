@@ -1,6 +1,6 @@
 {
   "name": "singleton-mqtt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Create a singleton instance of a mqtt connection (Node server)",
   "main": "index.js",
   "scripts": {
