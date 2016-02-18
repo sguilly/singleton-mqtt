@@ -14,6 +14,11 @@ server.on('ready', function()
     // Don't work with wildcards
     var clientMqtt0 = ClientMqtt.getInstance();
 
+    clientMqtt0.on('event',function(type)
+    {
+        console.log('0 event=',type);
+    });
+
     clientMqtt0.subscribeTopic('+/os',function(message) // No error but don't work !!!
     {
         console.log('mes0=',message);

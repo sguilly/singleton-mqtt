@@ -22,11 +22,18 @@ server.on('ready', function()
 
     var clientMqtt0 = ClientMqtt.getInstance(opts);
 
+    clientMqtt0.on('event',function(type)
+    {
+        console.log('0 event=',type);
+    });
+
     clientMqtt0.mqtt.on('connect', function()
     {
         console.log('connect out');
 
         clientMqtt0.mqtt.subscribe('+/os', {qos: 0});
+
+
 
         clientMqtt0.mqtt.on('message', function(topic,message)
         {
@@ -60,7 +67,7 @@ server.on('ready', function()
 
         setTimeout(function()
         {
-            //server.close();
+            server.close();
 
             console.log('>tata');
 
