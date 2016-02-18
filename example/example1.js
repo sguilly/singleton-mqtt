@@ -32,6 +32,10 @@ server.on('ready', function()
 
     clientMqtt1.publishObj('Nkc8yj3Dg/os',{date: new Date(), value: 56});
 
+    clientMqtt1.publishObj('Nkc8yj3Dg/os',{date: new Date(), value: 63});
+
+    clientMqtt1.mqtt.publish('Nkc8yj3Dg/os','toto');
+
 
     var clientMqtt2 = ClientMqtt.getInstance();
 

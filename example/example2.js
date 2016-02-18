@@ -22,52 +22,70 @@ server.on('ready', function()
 
     var clientMqtt0 = ClientMqtt.getInstance(opts);
 
-    clientMqtt0.subscribe('+/os', {qos: 0});
-
-    clientMqtt0.on('message', function(topic,message)
+    clientMqtt0.mqtt.on('connect', function()
     {
-        console.log('0=',topic, message);
-    });
+        console.log('connect out');
+
+        clientMqtt0.mqtt.subscribe('+/os', {qos: 0});
+
+        clientMqtt0.mqtt.on('message', function(topic,message)
+        {
+            console.log('0=',topic, message);
+        });
 
 
-    var clientMqtt1 = ClientMqtt.getInstance(opts);
+        var clientMqtt1 = ClientMqtt.getInstance(opts);
 
-    clientMqtt1.subscribe('THYUI/os', {qos: 0});
+        clientMqtt1.mqtt.subscribe('THYUI/os', {qos: 0});
 
-    clientMqtt1.on('message', function(topic,message)
-    {
-        console.log('1=',topic, message);
-    });
+        clientMqtt1.mqtt.on('message', function(topic,message)
+        {
+            console.log('1=',topic, message);
+        });
 
-    clientMqtt1.publish('THYUI/os',JSON.stringify(new Date()));
+        clientMqtt1.mqtt.publish('THYUI/os',JSON.stringify(new Date()));
 
 
 
-    var clientMqtt2 = ClientMqtt.getInstance(opts);
+        var clientMqtt2 = ClientMqtt.getInstance(opts);
 
-    clientMqtt2.subscribe('OLKKOK/os', {qos: 0});
+        clientMqtt2.mqtt.subscribe('OLKKOK/os', {qos: 0});
 
-    clientMqtt2.on('message', function(topic,message)
-    {
-        console.log('2=',topic, message);
-    });
+        clientMqtt2.mqtt.on('message', function(topic,message)
+        {
+            console.log('2=',topic, message);
+        });
 
-    clientMqtt2.publish('OLKKOK/os',JSON.stringify(new Date()));
+        clientMqtt2.mqtt.publish('OLKKOK/os',JSON.stringify(new Date()));
 
-    setTimeout(function()
-    {
-        server.close();
-    }, 2000);
+        setTimeout(function()
+        {
+            //server.close();
 
-    setTimeout(function()
-    {
-        console.log('clientMqtt2 =',ClientMqtt.getInstance().getStatus());
-    }, 5000);
+            console.log('>tata');
 
-    setTimeout(function()
-    {
-        console.log('clientMqtt2 =',ClientMqtt.getInstance().getStatus());
-    }, 10000);
+            var clientMqtt6 = ClientMqtt.getInstance(opts);
+            clientMqtt6.mqtt.publish('THYUI/os','tata',{qos:1},function(a,b)
+            {
+                console.log(a,b);
+            });
+        }, 2000);
+
+        clientMqtt2.publishObj('THYUI/os','tata');
+
+        setTimeout(function()
+        {
+            console.log('clientMqtt2 =',ClientMqtt.getInstance().getStatus());
+        }, 5000);
+
+        setTimeout(function()
+        {
+            console.log('clientMqtt2 =',ClientMqtt.getInstance().getStatus());
+        }, 10000);
+    })
+
+
+
 
 });
 
